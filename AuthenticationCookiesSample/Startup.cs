@@ -34,7 +34,10 @@ namespace AuthenticationCookiesSample
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddAuthentication()
-                .AddCookie();
+                .AddCookie(options=>{
+                    options.LoginPath="/Login";
+                    options.Cookie.Name="LoginCookie";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

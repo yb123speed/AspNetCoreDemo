@@ -4,6 +4,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App"/>
-    <PackageReference Include="Microsoft.IdentityModel" Version="6.1.7600.16394"/>
+    <PackageReference Include="System.Security.Claims" Version="4.3.0"/>
   </ItemGroup>
 </Project>
