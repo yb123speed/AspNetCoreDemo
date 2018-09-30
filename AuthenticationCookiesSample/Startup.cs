@@ -36,7 +36,15 @@ namespace AuthenticationCookiesSample
             services.AddAuthentication()
                 .AddCookie(options=>{
                     options.LoginPath="/Login";
-                    options.Cookie.Name="LoginCookie";
+
+                    options.SlidingExpiration=true;
+                    options.ExpireTimeSpan=TimeSpan.FromDays(1);
+                })
+                .AddCookie("Admin", "AdminCookie" ,options => {
+                    options.LoginPath = new PathString("/Login");
+
+                    options.SlidingExpiration=true;
+                    options.ExpireTimeSpan=TimeSpan.FromMinutes(10);
                 });
         }
 
