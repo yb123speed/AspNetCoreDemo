@@ -5,6 +5,8 @@
 }
 
 <form method="POST" asp-action="/Login" >
+    <input type="hidden" asp-for="Scheme" />
+    <input type="hidden" asp-for="RedirectToUrl" />
     <button type="submit">Login</button>
 </form>
 

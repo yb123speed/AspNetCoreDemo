@@ -14,23 +14,56 @@ namespace AuthenticationCookiesSample.Pages
 {
     public class LoginModel : PageModel
     {
-        public void OnGet()
+        //保存认证方案以及友好显示名称
+        [BindProperty]
+        public IDictionary<string, string> Schemes { get; set; } = new Dictionary<string, string>();
+
+        [BindProperty]
+        public string Scheme {get;set;}
+
+        //认证后我们要跳转的页面
+        [BindProperty]
+        public string RedirectToUrl {get;set;}
+
+        IAuthenticationSchemeProvider _authenticationSchemeProvider{get;set;}
+
+        public LoginModel(IAuthenticationSchemeProvider authenticationSchemeProvider)
         {
+            //_authenticationSchemeProvider = (IAuthenticationSchemeProvider)HttpContext.RequestServices.GetService(typeof(IAuthenticationSchemeProvider));
+            _authenticationSchemeProvider= authenticationSchemeProvider;
+        }
+
+        public async Task OnGetAsync(string ReturnUrl)
+        {
+            RedirectToUrl=ReturnUrl;
+            var authenticationSchemes = await _authenticationSchemeProvider.GetAllSchemesAsync();
+            foreach(var item in authenticationSchemes)
+            {
+                Schemes.Add(item.Name,item.DisplayName??item.Name);
+            }
+            if(ReturnUrl.Contains("Admin"))
+            {
+                Scheme="Admin";
+            }
+            else
+            {
+                Scheme="Cookies";
+            }
 
         }
 
-        public void OnPost()
+        public IActionResult OnPost(string scheme, string redirectToUrl)
         {
             //登陆验证
-            
+
             //保存cookie
-            var claims =new List<Claim>(){
-                new Claim(ClaimTypes.Name,"Yebin")
+            var claims = new List<Claim>{
+                new Claim(ClaimTypes.Name,scheme)
             };
 
-            var claimsIdentity=new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity)).Wait();
-            HttpContext.Response.Redirect("/");
+            var claimsIdentity = new ClaimsIdentity(claims, scheme);
+            HttpContext.SignInAsync(scheme, new ClaimsPrincipal(claimsIdentity));
+            return LocalRedirect(redirectToUrl);
         }
     }
 }
