@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MediatrSample.Models;
 using MediatR;
+using System.Data;
 using Microsoft.Extensions.Logging;
 
 namespace MediatrSample.Controllers
 {
     #region MediatR
+
+    #region publish
     public class SomeEvent : INotification
     {
         public SomeEvent(string message)
@@ -50,6 +53,26 @@ namespace MediatrSample.Controllers
             return Task.CompletedTask;
         }
     }
+    #endregion
+
+    #region request/response
+    public class Ping : IRequest<string> { }
+    public class PingHandler : IRequestHandler<Ping, string>
+    {
+        public string Handle(Ping request)
+        {
+            return "Pong";
+        }
+    }
+    // optional to show what happens with multiple handlers
+    public class Ping2Handler : IRequestHandler<Ping, string>
+    {
+        public string Handle(Ping request)
+        {
+            return "Pong2";
+        }
+    }
+    #endregion
 
     #endregion
 
@@ -67,9 +90,11 @@ namespace MediatrSample.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public async Task<IActionResult> About()
         {
-            ViewData["Message"] = "Your application description page.";
+            // example of request/response messages
+            var result = await _mediator.Send(new Ping());
+            ViewData["Message"] = $"Your application description page: {result}";
 
             return View();
         }
