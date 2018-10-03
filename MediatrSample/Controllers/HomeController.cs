@@ -59,17 +59,17 @@ namespace MediatrSample.Controllers
     public class Ping : IRequest<string> { }
     public class PingHandler : IRequestHandler<Ping, string>
     {
-        public string Handle(Ping request)
+        public Task<string> Handle(Ping request, CancellationToken cancellationToken)
         {
-            return "Pong";
+            return Task.FromResult("Pong");
         }
     }
     // optional to show what happens with multiple handlers
     public class Ping2Handler : IRequestHandler<Ping, string>
     {
-        public string Handle(Ping request)
+        public Task<string> Handle(Ping request,CancellationToken cancellationToken)
         {
-            return "Pong2";
+            return Task.FromResult("Pong2");
         }
     }
     #endregion
