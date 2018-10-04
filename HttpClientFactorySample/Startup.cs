@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using HttpClientFactorySample.Models;
 
 namespace HttpClientFactorySample
 {
@@ -31,6 +32,21 @@ namespace HttpClientFactorySample
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddHttpClient();
+
+            services.AddScoped(typeof(ClassInService));
+
+            services.AddHttpClient("CnBlogsWebSiteHttpClient",x=>{
+                x.BaseAddress=new Uri("https://www.cnblogs.com/");
+                x.DefaultRequestHeaders.Add("Cache-Control","no-cache");
+
+            });
+
+            services.AddHttpClient("MicrosoftWebSiteHttpClient",x=>{
+                x.BaseAddress=new Uri("https://www.microsoft.com/");
+                x.DefaultRequestHeaders.Add("Cache-Control","no-cache");
+
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
