@@ -10,8 +10,15 @@ namespace HttpClientFactorySample.Controllers
 {
     public class HomeController : Controller
     {
+        private ClassInService _service;
+
+        public HomeController(ClassInService service)
+        {
+            _service=service;
+        }
         public IActionResult Index()
         {
+            _service.HttpClientFactoryTest();
             return View();
         }
 
