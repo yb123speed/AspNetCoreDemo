@@ -12,6 +12,7 @@ namespace ApiVersioningSample.Controllers
     public class ValuesV2Controller : ControllerBase
     {
         // GET api/values
+        //https://localhost:5001/api/values?api-version=2.0
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
