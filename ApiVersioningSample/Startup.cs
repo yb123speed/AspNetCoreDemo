@@ -32,8 +32,13 @@ namespace ApiVersioningSample
                 o.AssumeDefaultVersionWhenUnspecified = true;
                 o.DefaultApiVersion = new ApiVersion(1, 0);
                 //这里通过ApiVersionReader属性指定了Api版本号是从请求头部的x-api-version属性来的。
-                o.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
-                //在查询字符串中指定版本号的方式将不再可用，如果你希望同时支持2种方式，请改用o.ApiVersionReader = new QueryStringOrHeaderApiVersionReader("x-api-version");
+                //o.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
+                //在查询字符串中指定版本号的方式将不再可用，如果你希望同时支持2种方式，请改用
+                //o.ApiVersionReader = new QueryStringOrHeaderApiVersionReader("x-api-version");  已修改  现版本无此类
+                o.ApiVersionReader = ApiVersionReader.Combine( 
+                    new QueryStringApiVersionReader("x-api-version"),
+                    new HeaderApiVersionReader("x-api-version")
+                );
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
