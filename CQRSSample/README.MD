@@ -26,4 +26,4 @@
 }
 ```
 
-![PostMan](./assets/test_json_data.png)
+![PostMan](https://github.com/yb123speed/AspNetCoreDemo/blob/master/CQRSSample/Assets/test_json_data.png)
