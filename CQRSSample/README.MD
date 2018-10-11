@@ -26,4 +26,4 @@
 }
 ```
 
-![PostMan](./assets/test_json_data.png)
+![PostMan](/assets/test_json_data.png)
