@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FluentValidationSample.Models;
 using Microsoft.AspNetCore.Mvc;
 using FluentValidation;
+using FluentValidation.AspNetCore;
 
 namespace FluentValidationSample.Controllers
 {
@@ -48,6 +49,12 @@ namespace FluentValidationSample.Controllers
             return !flag
                 ? Ok(new { code = -1, data = new List<string>(), msg })
                 : Ok(new { code = 0, data = new List<string> { "v1", "v2" }, msg = "" });
+        }
+
+        [HttpGet("hobbies4")]
+        public ActionResult GetHobbies4([FromQuery][CustomizeValidator(RuleSet ="all")]QueryStudentHobbiesDto dto)
+        {
+            return Ok(new { code = 0, data = new List<string> { "v1", "v2" }, msg = "" });
         }
     }
 }
