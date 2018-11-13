@@ -23,9 +23,11 @@ namespace FluentValidationSample.Controllers
         }
 
         private readonly IValidator<QueryStudentHobbiesDto> _validator;
-        public ValuesController(IValidator<QueryStudentHobbiesDto> validator)
+        private readonly IStudentService _studentService;
+        public ValuesController(IValidator<QueryStudentHobbiesDto> validator, IStudentService studentService)
         {
             _validator = validator;
+            _studentService = studentService;
         }
 
         [HttpGet("hobbies2")]
@@ -35,6 +37,17 @@ namespace FluentValidationSample.Controllers
             return !results.IsValid
                ? Ok(new { code = -1, data = new List<string>(), msg = results.Errors.FirstOrDefault().ErrorMessage })
                : Ok(new { code = 0, data = new List<string> { "v1", "v2" }, msg = "" });
+        }
+
+        // GET api/values/hobbies3  
+        [HttpGet("hobbies3")]
+        public ActionResult GetHobbies3([FromQuery]QueryStudentHobbiesDto dto)
+        {
+            var (flag, msg) = _studentService.QueryHobbies(dto);
+
+            return !flag
+                ? Ok(new { code = -1, data = new List<string>(), msg })
+                : Ok(new { code = 0, data = new List<string> { "v1", "v2" }, msg = "" });
         }
     }
 }

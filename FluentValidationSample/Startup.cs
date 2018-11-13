@@ -30,6 +30,8 @@ namespace FluentValidationSample
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSingleton<IValidator<QueryStudentHobbiesDto>,QueryStudentHobbiesDtoValidator>();
+            services.AddSingleton<IStudentService, StudentService>();
+            services.AddSingleton<AbstractValidator<QueryStudentHobbiesDto>, QueryStudentHobbiesDtoValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
