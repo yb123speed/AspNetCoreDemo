@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace FluentValidationSample.Models
 {
     public class Student

@@ -12,8 +12,8 @@ namespace FluentValidationSample.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetHobbies1([FromBody] QueryStudentHobbiesDto dto)
+        [HttpGet("hobbies1")]
+        public IActionResult GetHobbies1([FromQuery] QueryStudentHobbiesDto dto)
         {
             var validator = new QueryStudentHobbiesDtoValidator();
             var results = validator.Validate(dto, ruleSet: "all");
