@@ -52,6 +52,7 @@ namespace FluentValidationSample.Controllers
         }
 
         [HttpGet("hobbies4")]
+        [ValidateFilter]
         public ActionResult GetHobbies4([FromQuery][CustomizeValidator(RuleSet ="all")]QueryStudentHobbiesDto dto)
         {
             return Ok(new { code = 0, data = new List<string> { "v1", "v2" }, msg = "" });
