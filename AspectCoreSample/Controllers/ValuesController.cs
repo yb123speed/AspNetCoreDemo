@@ -10,10 +10,18 @@ namespace AspectCoreSample.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        IUserService _service { get; set; }
+        public ValuesController(IUserService service)
+        {
+            _service = service;
+        }
+
         // GET api/values
         [HttpGet]
+        //[CustomInterceptor]
         public ActionResult<IEnumerable<string>> Get()
         {
+            _service.Call();
             return new string[] { "value1", "value2" };
         }
 

@@ -7,14 +7,14 @@ using System.Linq;
 
 namespace AspectCoreSample
 {
-    public class CustomInterceptor:AbstractInterceptor
+    public class CustomInterceptor : AbstractInterceptor
     {
         public async override Task Invoke(AspectContext context, AspectDelegate next)
         {
             var logger = context.ServiceProvider.GetService<ILogger<CustomInterceptor>>();
             try
             {
-                var paras = "";
+                var paras = ",";
                 context.Parameters.ToList().ForEach(o=>paras+=o.ToString()+",");
                 paras.Substring(0,paras.Length-1);
                 logger.LogInformation($"Before Action. params is '{ paras }'");
