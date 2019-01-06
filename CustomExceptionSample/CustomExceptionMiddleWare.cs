@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace CustomExceptionSample
@@ -132,6 +135,14 @@ namespace CustomExceptionSample
             {
                 context.Request.Path = originPath;   //恢复原始请求页面
             }
+        }
+    }
+
+    public static class CustomExceptionMiddleWareExtensions
+    {
+        public static IApplicationBuilder UseCustomException(this IApplicationBuilder app, CustomExceptionMiddleWareOption option)
+        {
+            return app.UseMiddleware<CustomExceptionMiddleWare>(option);
         }
     }
 }
