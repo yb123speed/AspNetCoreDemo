@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -42,6 +43,11 @@ namespace CustomExceptionSample
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            app.UseCustomException(new CustomExceptionMiddleWareOption(
+                     handleType: CustomExceptionHandleType.Both,  //根据url关键字决定处理方式
+                    jsonHandleUrlKeys: new PathString[] { "/api" },
+                    errorHandingPath: "/home/error"));
         }
     }
 }
