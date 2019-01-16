@@ -10,7 +10,7 @@ using SimpleTaskApp.EntityFrameworkCore;
 namespace SimpleTaskApp.Migrations
 {
     [DbContext(typeof(SimpleTaskAppDbContext))]
-    [Migration("20190116011320_Initial")]
+    [Migration("20190116013215_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,7 @@ namespace SimpleTaskApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("AppTasks");
                 });
 #pragma warning restore 612, 618
         }

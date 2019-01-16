@@ -4,10 +4,12 @@ using Abp.Timing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace SimpleTaskApp.Tasks
 {
+    [Table("AppTasks")]
     public class Task:Entity,IHasCreationTime
     {
         public const int MaxTitleLength = 256;
