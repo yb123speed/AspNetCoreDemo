@@ -21,7 +21,10 @@ namespace SimpleTaskApp.Web.Controllers
         public async Task<IActionResult> Index(GetAllTasksInput input)
         {
             var output = await _taskAppService.GetAllAsync(input);
-            var model = new IndexViewModel(output.Items);
+            var model = new IndexViewModel(output.Items)
+            {
+                SelectedTaskState = input.State
+            };
             return View(model);
         }
     }
