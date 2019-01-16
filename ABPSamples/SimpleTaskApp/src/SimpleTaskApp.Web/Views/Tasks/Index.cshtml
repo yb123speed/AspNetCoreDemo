@@ -1,0 +1,25 @@
+﻿@model SimpleTaskApp.Web.Models.Tasks.IndexViewModel
+
+@{
+    ViewData["Title"] = L("TaskList");
+    ViewBag.ActiveMenu = "TaskList"; //Matches with the menu name in SimpleTaskAppNavigationProvider to highlight the menu item
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div>
+        <ul class="list-group" id="TaskList">
+            @foreach (var task in Model.Tasks)
+            {
+                <li class="list-group-item">
+                    <span class="pull-right label @Model.GetTaskLabel(task)">@L($"TaskState_{task.State}")</span>
+                    <h4 class="list-group-item-heading">@task.Title</h4>
+                    <div class="list-group-item-text">
+                        @task.CreationTime.ToString("yyyy-MM-dd HH:mm:ss")
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
