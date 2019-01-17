@@ -39,7 +39,7 @@ namespace SimpleTaskApp.Migrations
                 column: "AssignedPersonId",
                 principalTable: "AppPersons",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.SetNull); //将ReferentialAction.Restrict更改为ReferentialAction.SetNull。它这样做：如果我删除一个人，分配给该人的任务将被取消分配。
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
