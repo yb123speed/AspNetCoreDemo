@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using SimpleTaskApp.People;
 
 namespace SimpleTaskApp.Tasks
 {
@@ -26,17 +27,22 @@ namespace SimpleTaskApp.Tasks
 
         public TaskState State { get; set; }
 
+        [ForeignKey(nameof(AssignedPersonId))]
+        public Person AssignedPerson { get; set; }
+        public Guid? AssignedPersonId { get; set; }
+
         public Task()
         {
             CreationTime = Clock.Now;
             State = TaskState.Open;
         }
 
-        public Task(string title, string description = null)
+        public Task(string title, string description = null, Guid? assignedPersonId = null)
             : this()
         {
             Title = title;
             Description = description;
+            AssignedPersonId = assignedPersonId;
         }
     }
 
