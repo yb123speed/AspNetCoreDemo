@@ -12,5 +12,6 @@ namespace SimpleTaskApp.Tasks
     {
         Task<ListResultDto<TaskListDto>> GetAllAsync(GetAllTasksInput input);
 
+        System.Threading.Tasks.Task Create(CreateTaskInput input);
     }
 }

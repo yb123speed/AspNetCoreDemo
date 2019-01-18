@@ -34,5 +34,11 @@ namespace SimpleTaskApp.Tasks
                     ObjectMapper.Map<List<TaskListDto>>(tasks)
                 );
         }
+
+        public async System.Threading.Tasks.Task Create(CreateTaskInput input)
+        {
+            var task = ObjectMapper.Map<Task>(input);
+            await _taskRepository.InsertAsync(task);
+        }
     }
 }
