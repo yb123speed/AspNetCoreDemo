@@ -2,6 +2,7 @@
 using SimpleTaskApp.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -24,6 +25,7 @@ namespace SimpleTaskApp.Tests.Tasks
 
             //Assert
             output.Items.Count.ShouldBe(2);
+            output.Items.Count(t => t.AssignedPersonName != null).ShouldBe(1);
         }
 
         [Fact]
