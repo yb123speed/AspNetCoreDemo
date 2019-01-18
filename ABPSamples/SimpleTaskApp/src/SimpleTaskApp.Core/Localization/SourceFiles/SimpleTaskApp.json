@@ -9,6 +9,14 @@
     "About_Description": "This is a simple startup template to use ASP.NET Core with ABP framework.",
     "TaskList": "Task List",
     "TaskState_Open": "Open",
-    "TaskState_Completed": "Completed"
+    "TaskState_Completed": "Completed",
+    "AllTasks": "All Tasks",
+    "Unassigned": "Unassigned",
+    "NewTask": "New Task",
+    "Title": "Title",
+    "Description": "Description",
+    "Save": "Save",
+    "AddNew": "Add New",
+    "AssignedPerson": "Assigned Person"
   }
 }
