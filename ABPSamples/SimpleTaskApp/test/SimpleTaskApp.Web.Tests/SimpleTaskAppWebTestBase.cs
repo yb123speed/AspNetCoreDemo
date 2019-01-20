@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Abp.AspNetCore.TestBase;
 using SimpleTaskApp.EntityFrameworkCore;
 using SimpleTaskApp.Tests.TestDatas;
-using AngleSharp.Dom.Html;
-using AngleSharp.Parser.Html;
 using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Shouldly;
+using AngleSharp.Html.Parser;
+using AngleSharp.Html.Dom;
 
 namespace SimpleTaskApp.Web.Tests
 {
@@ -116,7 +116,7 @@ namespace SimpleTaskApp.Web.Tests
 
         protected IHtmlDocument ParseHtml(string htmlString)
         {
-            return new HtmlParser().Parse(htmlString);
+            return new HtmlParser().ParseDocument(htmlString);
         }
 
         #endregion

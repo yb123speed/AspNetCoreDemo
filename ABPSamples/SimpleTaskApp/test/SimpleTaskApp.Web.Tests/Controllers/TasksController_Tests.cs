@@ -6,7 +6,7 @@ using SimpleTaskApp.Tasks;
 using Task = System.Threading.Tasks.Task;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using AngleSharp.Parser.Html;
+using AngleSharp.Html.Parser;
 
 namespace SimpleTaskApp.Web.Tests.Controllers
 {
@@ -31,7 +31,7 @@ namespace SimpleTaskApp.Web.Tests.Controllers
                 return await context.Tasks.Where(t => t.State == TaskState.Open).ToListAsync();
             });
 
-            var document = new HtmlParser().Parse(response);
+            var document = new HtmlParser().ParseDocument(response);
             var listItems = document.QuerySelectorAll("#TaskList li");
 
             listItems.Length.ShouldBe(tasksInDatabase.Count);
