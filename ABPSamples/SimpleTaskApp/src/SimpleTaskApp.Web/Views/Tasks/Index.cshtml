@@ -5,8 +5,9 @@
     ViewBag.ActiveMenu = "TaskList"; //Matches with the menu name in SimpleTaskAppNavigationProvider to highlight the menu item
 }
 
-<h2>
+<div style="padding-bottom:1.5rem;">
     @ViewData["Title"]
+    <a class="btn btn-primary btn-sm" asp-action="Create">@L("AddNew")</a>
     <span class="pull-right">
         @Html.DropDownListFor(
            model => model.SelectedTaskState,
@@ -17,7 +18,7 @@
                id = "TaskStateCombobox"
            })
     </span>
-</h2>
+</div>
 
 <div class="row">
     <div>
