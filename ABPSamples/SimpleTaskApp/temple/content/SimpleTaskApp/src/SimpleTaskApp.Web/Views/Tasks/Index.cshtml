@@ -1,0 +1,48 @@
+﻿@model SimpleTaskApp.Web.Models.Tasks.IndexViewModel
+
+@{
+    ViewData["Title"] = L("TaskList");
+    ViewBag.ActiveMenu = "TaskList"; //Matches with the menu name in SimpleTaskAppNavigationProvider to highlight the menu item
+}
+
+<div style="padding-bottom:1.5rem;">
+    @ViewData["Title"]
+    <a class="btn btn-primary btn-sm" asp-action="Create">@L("AddNew")</a>
+    <span class="pull-right">
+        @Html.DropDownListFor(
+           model => model.SelectedTaskState,
+           Model.GetTasksStateSelectListItems(LocalizationManager),
+           new
+           {
+               @class = "form-control",
+               id = "TaskStateCombobox"
+           })
+    </span>
+</div>
+
+<div class="row">
+    <div>
+        <ul class="list-group" id="TaskList">
+            @foreach (var task in Model.Tasks)
+            {
+                <li class="list-group-item">
+                    <span class="pull-right label @Model.GetTaskLabel(task)">@L($"TaskState_{task.State}")</span>
+                    <h4 class="list-group-item-heading">@task.Title</h4>
+                    <div class="list-group-item-text">
+                        @task.CreationTime.ToString("yyyy-MM-dd HH:mm:ss") | @(task.AssignedPersonName ?? L("Unassigned"))
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/js/views/tasks/index.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/views/tasks/index.min.js"></script>
+    </environment>
+}
