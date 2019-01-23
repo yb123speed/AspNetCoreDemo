@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Abp.PlugIns;
 
 namespace SimpleTaskApp.Web.Startup
 {
@@ -26,6 +27,18 @@ namespace SimpleTaskApp.Web.Startup
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
+
+            #region ABP Module
+            //services.AddAbp<MyStartupModule>(options =>
+            //{
+            //    options.PlugInSources.Add(new FolderPlugInSource(@"C:\MyPlugIns"));
+            //});
+
+            services.AddAbp<MyStartupModule>(options =>
+            {
+                options.PlugInSources.AddFolder(@"C:\MyPlugIns");
+            });
+            #endregion
 
             //Configure Abp and Dependency Injection
             return services.AddAbp<SimpleTaskAppWebModule>(options =>
