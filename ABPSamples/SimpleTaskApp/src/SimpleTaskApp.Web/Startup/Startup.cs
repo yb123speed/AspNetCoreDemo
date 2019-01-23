@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Abp.PlugIns;
+using System.IO;
 
 namespace SimpleTaskApp.Web.Startup
 {
@@ -36,7 +37,9 @@ namespace SimpleTaskApp.Web.Startup
 
             services.AddAbp<MyStartupModule>(options =>
             {
-                options.PlugInSources.AddFolder(@"C:\MyPlugIns");
+                options.PlugInSources.AddFolder(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"PlugIns"));
+                var p = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"PlugIns");
+                Console.WriteLine(p);
             });
             #endregion
 
