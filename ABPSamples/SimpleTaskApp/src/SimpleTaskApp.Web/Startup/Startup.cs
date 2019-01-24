@@ -35,12 +35,12 @@ namespace SimpleTaskApp.Web.Startup
             //    options.PlugInSources.Add(new FolderPlugInSource(@"C:\MyPlugIns"));
             //});
 
-            services.AddAbp<MyStartupModule>(options =>
-            {
-                options.PlugInSources.AddFolder(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"PlugIns"));
-                var p = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"PlugIns");
-                Console.WriteLine(p);
-            });
+            //services.AddAbp<MyStartupModule>(options =>
+            //{
+            //    options.PlugInSources.AddFolder(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"PlugIns"));
+            //    var p = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"PlugIns");
+            //    Console.WriteLine(p);
+            //});
             #endregion
 
             //Configure Abp and Dependency Injection
