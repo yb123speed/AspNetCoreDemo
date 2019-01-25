@@ -10,8 +10,19 @@ namespace MvcwithEFMycatSample.Controllers
 {
     public class HomeController : Controller
     {
+        public MyDbContext _context { get; set; }
+        public HomeController(MyDbContext myDbContext)
+        {
+            _context = myDbContext;
+        }
+
         public IActionResult Index()
         {
+            var users = _context.Users.FirstOrDefault();
+
+            users.Name = "Yebin1";
+            _context.SaveChanges();
+
             return View();
         }
 
