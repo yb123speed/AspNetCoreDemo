@@ -26,7 +26,6 @@ namespace MvcwithEFMycatSample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MyDbContext>();
-            services.AddEntityFrameworkMySql();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
