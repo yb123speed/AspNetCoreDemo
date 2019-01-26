@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MvcwithEFMycatSample.Models;
 
 namespace MvcwithEFMycatSample.Controllers
@@ -20,8 +21,10 @@ namespace MvcwithEFMycatSample.Controllers
         {
             var users = _context.Users.FirstOrDefault();
 
-            users.Name = "Yebin1";
-            _context.SaveChanges();
+            //users.Name = "Yebin1";
+            //_context.SaveChanges();
+
+            _context.Database.ExecuteSqlCommand("INSERT INTO dt_users ( Name ) VALUES ('Yebin2') ");
 
             return View();
         }
