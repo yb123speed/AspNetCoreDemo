@@ -1,0 +1,22 @@
+﻿{
+  "culture": "zh-cn",
+  "texts": {
+    "HelloWorld": "你好世界",
+    "ChangeLanguage": "切换语言",
+    "HomePage": "主页",
+    "About": "关于",
+    "Home_Description": "欢迎来到简单任务应用",
+    "About_Description": "这是一个使用ABP的单系统",
+    "TaskList": "任务列表",
+    "TaskState_Open": "开启",
+    "TaskState_Completed": "完成",
+    "AllTasks": "所有任务",
+    "Unassigned": "未分配",
+    "NewTask": "新任务",
+    "Title": "标题",
+    "Description": "描述",
+    "Save": "保存",
+    "AddNew": "新增",
+    "AssignedPerson": "指定人员"
+  }
+}
