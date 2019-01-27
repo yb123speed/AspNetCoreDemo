@@ -11,8 +11,9 @@ namespace SimpleTaskApp.Localization
     {
         public static void Configure(ILocalizationConfiguration localizationConfiguration)
         {
-            localizationConfiguration.Languages.Add(new LanguageInfo("en", "English", "famfamfam-flags england", isDefault: true));
+            localizationConfiguration.Languages.Add(new LanguageInfo("en", "English", "famfamfam-flags england"));
             localizationConfiguration.Languages.Add(new LanguageInfo("tr", "Türkçe", "famfamfam-flags tr"));
+            localizationConfiguration.Languages.Add(new LanguageInfo("zh-cn","中文简体", "famfamfam-flags cn", isDefault:true));
 
             localizationConfiguration.Sources.Add(
                 new DictionaryBasedLocalizationSource(SimpleTaskAppConsts.LocalizationSourceName,
