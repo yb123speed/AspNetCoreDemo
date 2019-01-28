@@ -1,4 +1,5 @@
-﻿using Abp.Modules;
+﻿using Abp.Configuration.Startup;
+using Abp.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,12 @@ namespace SimpleTaskApp.Web
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
+        }
+
+        public override void PreInitialize()
+        {
+            //将AbpWebCommon模块配置为向客户端发送所有异常。
+            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
         }
     }
 }
