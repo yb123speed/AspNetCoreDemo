@@ -23,6 +23,11 @@ namespace SimpleTaskApp.Web
         {
             //将AbpWebCommon模块配置为向客户端发送所有异常。
             Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
+
+            //注册模块配置类，它应该像这样注册为Singleton。
+            IocManager.Register<MyStartupModuleConfig>();
+
+            Configuration.Get<MyStartupModuleConfig>().SampleConfig1 = false;
         }
     }
 }
