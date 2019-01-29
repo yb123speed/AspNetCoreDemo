@@ -41,6 +41,8 @@ namespace SimpleTaskApp.Web.Startup
             //    var p = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"PlugIns");
             //    Console.WriteLine(p);
             //});
+
+            //services.AddAbp<MyStartupModule>();
             #endregion
 
             //Configure Abp and Dependency Injection
