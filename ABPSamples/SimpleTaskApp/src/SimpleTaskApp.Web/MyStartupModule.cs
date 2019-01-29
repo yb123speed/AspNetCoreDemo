@@ -28,6 +28,8 @@ namespace SimpleTaskApp.Web
             IocManager.Register<MyStartupModuleConfig>();
 
             Configuration.Get<MyStartupModuleConfig>().SampleConfig1 = false;
+
+            Configuration.Modules.MyStarttupModule().SampleConfig2 = "hello,world!";
         }
     }
 }
