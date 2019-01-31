@@ -28,6 +28,8 @@ namespace SimpleTaskApp.Web.Startup
 
             Configuration.Navigation.Providers.Add<SimpleTaskAppNavigationProvider>();
 
+            Configuration.MultiTenancy.IsEnabled = true;
+
             Configuration.Modules.AbpAspNetCore()
                 .CreateControllersForAppServices(
                     typeof(SimpleTaskAppApplicationModule).GetAssembly()
