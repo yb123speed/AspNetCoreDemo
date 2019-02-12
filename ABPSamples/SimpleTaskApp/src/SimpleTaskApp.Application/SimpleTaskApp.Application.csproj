@@ -14,8 +14,8 @@
     <ProjectReference Include="..\SimpleTaskApp.Core\SimpleTaskApp.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Abp.EntityFrameworkCore" Version="4.1.0" />
-    <PackageReference Include="Abp.AutoMapper" Version="4.1.0" />
+    <PackageReference Include="Abp.EntityFrameworkCore" Version="4.2.0" />
+    <PackageReference Include="Abp.AutoMapper" Version="4.2.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="People\Dtos\" />
