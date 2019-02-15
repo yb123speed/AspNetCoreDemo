@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SimpleTaskApp.People
 {
-    public class PersonAppService: ITransientDependency//,IPersonAppService
+    public class PersonAppService: ITransientDependency,IPersonAppService
     {
         private readonly IDapperRepository<Person,Guid> _personDapperRepository;
         private readonly IRepository<Person,Guid> _personRepository;
