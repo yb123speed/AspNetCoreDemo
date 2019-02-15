@@ -7,5 +7,6 @@ namespace SimpleTaskApp.People
 {
     public interface IPersonAppService:IApplicationService
     {
+        void DoSomeStuff();
     }
 }
