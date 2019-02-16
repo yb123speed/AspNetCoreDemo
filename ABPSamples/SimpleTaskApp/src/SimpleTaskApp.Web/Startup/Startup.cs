@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Abp.PlugIns;
 using System.IO;
+using Microsoft.Extensions.Configuration;
 
 namespace SimpleTaskApp.Web.Startup
 {
@@ -21,7 +22,8 @@ namespace SimpleTaskApp.Web.Startup
             //Configure DbContext
             services.AddAbpDbContext<SimpleTaskAppDbContext>(options =>
             {
-                DbContextOptionsConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
+                //DbContextOptionsConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
+                DbContextOptionsConfigurer.Configure(options.DbContextOptions, options.ConnectionString, 1);
             });
 
             services.AddMvc(options =>
