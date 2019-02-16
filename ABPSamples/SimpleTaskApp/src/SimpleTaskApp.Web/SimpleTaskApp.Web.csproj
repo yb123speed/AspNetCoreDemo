@@ -23,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SimpleTaskApp.Application\SimpleTaskApp.Application.csproj" />
+    <ProjectReference Include="..\SimpleTaskApp.Dapper\SimpleTaskApp.Dapper.csproj" />
     <ProjectReference Include="..\SimpleTaskApp.EntityFrameworkCore\SimpleTaskApp.EntityFrameworkCore.csproj" />
   </ItemGroup>
   <ItemGroup>

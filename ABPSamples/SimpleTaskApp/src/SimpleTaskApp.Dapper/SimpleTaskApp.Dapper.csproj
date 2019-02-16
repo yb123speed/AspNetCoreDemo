@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Abp.Dapper" Version="4.2.0" />
+    <PackageReference Include="Abp.EntityFrameworkCore" Version="4.2.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -22,7 +22,7 @@ namespace SimpleTaskApp.People
 
         public void DoSomeStuff()
         {
-            var people = _personDapperRepository.Query("select * from Persons");
+            var people = _personDapperRepository.Query("select * from AppPersons");
         }
     }
 }

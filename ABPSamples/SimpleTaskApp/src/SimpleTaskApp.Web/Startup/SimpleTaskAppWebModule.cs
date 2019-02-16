@@ -6,12 +6,14 @@ using SimpleTaskApp.Configuration;
 using SimpleTaskApp.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using SimpleTaskApp.Dapper;
 
 namespace SimpleTaskApp.Web.Startup
 {
     [DependsOn(
         typeof(SimpleTaskAppApplicationModule), 
         typeof(SimpleTaskAppEntityFrameworkCoreModule), 
+        typeof(SimpleTaskAppDapperModule),
         typeof(AbpAspNetCoreModule))]
     public class SimpleTaskAppWebModule : AbpModule
     {
