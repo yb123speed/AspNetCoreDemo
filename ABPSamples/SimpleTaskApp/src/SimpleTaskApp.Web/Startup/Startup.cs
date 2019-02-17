@@ -22,8 +22,7 @@ namespace SimpleTaskApp.Web.Startup
             //Configure DbContext
             services.AddAbpDbContext<SimpleTaskAppDbContext>(options =>
             {
-                //DbContextOptionsConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
-                DbContextOptionsConfigurer.Configure(options.DbContextOptions, options.ConnectionString, 1);
+                DbContextOptionsConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
             });
 
             services.AddMvc(options =>

@@ -6,19 +6,11 @@ namespace SimpleTaskApp.EntityFrameworkCore
     {
         public static void Configure(
             DbContextOptionsBuilder<SimpleTaskAppDbContext> dbContextOptions, 
-            string connectionString,int type=1
+            string connectionString
             )
         {
             /* This is the single point to configure DbContextOptions for SimpleTaskAppDbContext */
-            switch (type)
-            {
-                case 0:
-                    dbContextOptions.UseSqlServer(connectionString);
-                    break;
-                case 1:
-                    dbContextOptions.UseMySql(connectionString);
-                    break;
-            }
+            dbContextOptions.UseMySql(connectionString);
         }
     }
 }
