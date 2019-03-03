@@ -33,6 +33,7 @@ namespace SimpleTaskApp.People
             _personDapperRepository.Update(person);
             person = _personDapperRepository.Single(people.Skip(1).Take(1).First().Id);
             _personDapperRepository.Insert(new Person { Name= "Yebin_" + Guid.NewGuid().ToString().Substring(15),Id= Guid.NewGuid(),CreationTime=Clock.Now});
+            _personDapperRepository.Delete(people.Skip(2).Take(1).First().Id);
         }
     }
 }
