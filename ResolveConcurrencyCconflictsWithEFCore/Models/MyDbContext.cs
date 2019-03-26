@@ -12,5 +12,14 @@ namespace ResolveConcurrencyCconflictsWithEFCore.Models
         {
         }
         public DbSet<Post> Posts { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //// Fluent API
+            //modelBuilder.Entity<Post>()
+            //    .Property(p => p.RowVersion).IsConcurrencyToken();
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
