@@ -26,8 +26,10 @@ namespace ResolveConcurrencyCconflictsWithEFCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connecttext = Configuration.GetConnectionString("Sqlite");
-            services.AddDbContext<MyDbContext>(options => options.UseSqlite(connecttext));
+            //string connecttext = Configuration.GetConnectionString("Sqlite");
+            //services.AddDbContext<MyDbContext>(options => options.UseSqlite(connecttext));
+            string connecttext = Configuration.GetConnectionString("SqlServer");
+            services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connecttext));
 
             services.Configure<CookiePolicyOptions>(options =>
             {
